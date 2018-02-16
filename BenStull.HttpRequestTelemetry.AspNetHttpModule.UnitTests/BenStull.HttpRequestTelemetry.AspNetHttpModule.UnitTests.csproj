@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5F151A93-974B-4501-B8CE-42A7F27AFBE7}</ProjectGuid>
+    <ProjectGuid>{D17F3081-6B40-49F7-8EB1-9BD665CCD06B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BenStull.HttpRequestTelemetry.Model.UnitTests</RootNamespace>
-    <AssemblyName>BenStull.HttpRequestTelemetry.Model.UnitTests</AssemblyName>
+    <RootNamespace>BenStull.HttpRequestTelemetry.AspNetHttpModule.UnitTests</RootNamespace>
+    <AssemblyName>BenStull.HttpRequestTelemetry.AspNetHttpModule.UnitTests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -60,6 +60,7 @@
     <Reference Include="System.ValueTuple, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.3.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="xunit.abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
       <HintPath>..\packages\xunit.abstractions.2.0.1\lib\net35\xunit.abstractions.dll</HintPath>
     </Reference>
@@ -74,6 +75,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HttpModule\ResponseStreamFilter_UnitTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -83,12 +85,16 @@
     <Analyzer Include="..\packages\xunit.analyzers.0.7.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BenStull.HttpRequestTelemetry.AspNetHttpModule\BenStull.HttpRequestTelemetry.AspNetHttpModule.csproj">
+      <Project>{0ed603aa-5d6b-400a-8344-096e49a31472}</Project>
+      <Name>BenStull.HttpRequestTelemetry.AspNetHttpModule</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BenStull.HttpRequestTelemetry.Domain\BenStull.HttpRequestTelemetry.Domain.csproj">
-      <Project>{2CAB6FC4-02EE-4447-991C-9682346E6C84}</Project>
+      <Project>{2cab6fc4-02ee-4447-991c-9682346e6c84}</Project>
       <Name>BenStull.HttpRequestTelemetry.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\BenStull.HttpRequestTelemetry.Model\BenStull.HttpRequestTelemetry.Model.csproj">
-      <Project>{8FDDA635-BB57-4DD5-A42B-E5003D88027E}</Project>
+      <Project>{8fdda635-bb57-4dd5-a42b-e5003d88027e}</Project>
       <Name>BenStull.HttpRequestTelemetry.Model</Name>
     </ProjectReference>
   </ItemGroup>

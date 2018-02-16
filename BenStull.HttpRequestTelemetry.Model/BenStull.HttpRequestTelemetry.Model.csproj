@@ -41,6 +41,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Telemetry\HttpRequestTelemetry.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BenStull.HttpRequestTelemetry.Domain\BenStull.HttpRequestTelemetry.Domain.csproj">
+      <Project>{2CAB6FC4-02EE-4447-991C-9682346E6C84}</Project>
+      <Name>BenStull.HttpRequestTelemetry.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,7 +41,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HttpModule\AspNetHttpModule.cs" />
+    <Compile Include="HttpModule\ResponseStreamFilter.cs" />
+    <Compile Include="HttpResponse\AspNetHttpResponseInformation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BenStull.HttpRequestTelemetry.Domain\BenStull.HttpRequestTelemetry.Domain.csproj">
+      <Project>{2CAB6FC4-02EE-4447-991C-9682346E6C84}</Project>
+      <Name>BenStull.HttpRequestTelemetry.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BenStull.HttpRequestTelemetry.Model\BenStull.HttpRequestTelemetry.Model.csproj">
+      <Project>{8fdda635-bb57-4dd5-a42b-e5003d88027e}</Project>
+      <Name>BenStull.HttpRequestTelemetry.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
