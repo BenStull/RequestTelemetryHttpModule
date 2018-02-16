@@ -10,12 +10,16 @@ namespace BenStull.HttpRequestTelemetry.AspNetHttpModule.HttpModule
     /// </summary>
     public class AspNetHttpModule : IHttpModule
     {
-        private IList<IHttpResponseTelemetryCollector> _responseTelemetryCollectors;
+        private static IList<IHttpResponseTelemetryCollector> _responseTelemetryCollectors;
+
+        static AspNetHttpModule()
+        {
+            _responseTelemetryCollectors = new List<IHttpResponseTelemetryCollector>();
+        }
 
         public void Init(HttpApplication context)
         {
             context.BeginRequest += BeginRequest;
-            _responseTelemetryCollectors = new List<IHttpResponseTelemetryCollector>();
         }
 
         public void BeginRequest(object sender, EventArgs e)

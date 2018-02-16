@@ -39,7 +39,7 @@ namespace BenStull.HttpRequestTelemetry.AspNetHttpModule.HttpModule
 
         public override void Flush()
         {
-            throw new NotImplementedException();
+            _originalResponseStream.Flush();
         }
 
         public override long Seek(long offset, SeekOrigin origin)
@@ -59,7 +59,7 @@ namespace BenStull.HttpRequestTelemetry.AspNetHttpModule.HttpModule
 
         public override void Write(byte[] buffer, int offset, int count)
         {
-            throw new NotImplementedException();
+            _originalResponseStream.Write(buffer, offset, count);
         }
 
         public override void Close()
