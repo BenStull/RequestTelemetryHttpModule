@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BenStull.HttpRequestTelemet
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BenStull.HttpRequestTelemetry.AspNetHttpModule.UnitTests", "BenStull.HttpRequestTelemetry.AspNetHttpModule.UnitTests\BenStull.HttpRequestTelemetry.AspNetHttpModule.UnitTests.csproj", "{D17F3081-6B40-49F7-8EB1-9BD665CCD06B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BenStull.HttpRequestTelemetry.AspNetHttpModule.Demo", "BenStull.HttpRequestTelemetry.AspNetHttpModule.Demo\BenStull.HttpRequestTelemetry.AspNetHttpModule.Demo.csproj", "{D42DA7CD-8C28-4CFC-BC3C-2D33A7F7B4AD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{D17F3081-6B40-49F7-8EB1-9BD665CCD06B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D17F3081-6B40-49F7-8EB1-9BD665CCD06B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D17F3081-6B40-49F7-8EB1-9BD665CCD06B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D42DA7CD-8C28-4CFC-BC3C-2D33A7F7B4AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D42DA7CD-8C28-4CFC-BC3C-2D33A7F7B4AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D42DA7CD-8C28-4CFC-BC3C-2D33A7F7B4AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D42DA7CD-8C28-4CFC-BC3C-2D33A7F7B4AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
