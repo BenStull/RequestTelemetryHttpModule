@@ -53,7 +53,7 @@ namespace BenStull.HttpRequestTelemetry.Model.Telemetry.RequestCollectors
             AddAverageResponseSizeTelemetry(totalData, totalRequests, requestTelemetry);
         }
 
-        private void AddTotalRequestsTelemetry(long numberOfRequests, IHttpRequestTelemetry requestTelemetry)
+        private static void AddTotalRequestsTelemetry(long numberOfRequests, IHttpRequestTelemetry requestTelemetry)
         {
             var dataPoint = new HttpRequestTelemetryDataPoint {
                 MetricName = "Total Requests",
@@ -64,7 +64,7 @@ namespace BenStull.HttpRequestTelemetry.Model.Telemetry.RequestCollectors
             requestTelemetry.AddDataPoint(dataPoint);
         }
 
-        private void AddCurrentRequestResponseSizeTelemetry(long responseInformationResponseBodySizeInBytes, IHttpRequestTelemetry requestTelemetry)
+        private static void AddCurrentRequestResponseSizeTelemetry(long responseInformationResponseBodySizeInBytes, IHttpRequestTelemetry requestTelemetry)
         {
             var dataPoint = new HttpRequestTelemetryDataPoint {
                 MetricName = "Response Body Size",
@@ -76,7 +76,7 @@ namespace BenStull.HttpRequestTelemetry.Model.Telemetry.RequestCollectors
             requestTelemetry.AddDataPoint(dataPoint);
         }
 
-        private void AddMaxEncounteredTelemetry(long maxResponseSizeEncountered, IHttpRequestTelemetry requestTelemetry)
+        private static void AddMaxEncounteredTelemetry(long maxResponseSizeEncountered, IHttpRequestTelemetry requestTelemetry)
         {
             var dataPoint = new HttpRequestTelemetryDataPoint {
                 MetricName = "Maximum Response Body Size",
@@ -88,7 +88,7 @@ namespace BenStull.HttpRequestTelemetry.Model.Telemetry.RequestCollectors
             requestTelemetry.AddDataPoint(dataPoint);
         }
 
-        private void AddMinEncounteredTelemetry(long minResponseSizeEncountered, IHttpRequestTelemetry requestTelemetry)
+        private static void AddMinEncounteredTelemetry(long minResponseSizeEncountered, IHttpRequestTelemetry requestTelemetry)
         {
             var dataPoint = new HttpRequestTelemetryDataPoint {
                 MetricName = "Minimum Response Body Size",
@@ -100,7 +100,7 @@ namespace BenStull.HttpRequestTelemetry.Model.Telemetry.RequestCollectors
             requestTelemetry.AddDataPoint(dataPoint);
         }
 
-        private void AddAverageResponseSizeTelemetry(long totalData, long totalRequests, IHttpRequestTelemetry requestTelemetry)
+        private static void AddAverageResponseSizeTelemetry(long totalData, long totalRequests, IHttpRequestTelemetry requestTelemetry)
         {
             var dataPoint = new HttpRequestTelemetryDataPoint {
                 MetricName = "Average Response Body Size",

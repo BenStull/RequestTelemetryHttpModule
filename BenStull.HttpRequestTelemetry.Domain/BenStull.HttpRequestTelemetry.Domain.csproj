@@ -41,8 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HttpRequest\IHttpRequestInformation.cs" />
-    <Compile Include="HttpRequest\IHttpResponseTelemetryCollector.cs" />
-    <Compile Include="HttpRequest\IHttpResponseTelemetryCollectorsCollection.cs" />
+    <Compile Include="HttpRequest\IHttpRequestTelemetryCollector.cs" />
+    <Compile Include="HttpRequest\IHttpRequestTelemetryCollectorsCollection.cs" />
     <Compile Include="HttpResponse\IHttpResponseInformation.cs" />
     <Compile Include="HttpResponse\IHttpResponseTelemetryCollector.cs" />
     <Compile Include="HttpResponse\IHttpResponseTelemetryCollectorsCollection.cs" />

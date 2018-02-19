@@ -3,7 +3,8 @@
 namespace BenStull.HttpRequestTelemetry.Domain.HttpRequest
 {
     /// <summary>
-    ///  Executes telemetry collectors.  Will not execute if previously executed.
+    ///  Executes request telemetry collectors.  Will not execute if previously executed.
+    ///  Request telemetry collectors may be executed as soon as the HTTP request has been received
     /// </summary>
     public interface IHttpRequestTelemetryCollectorsCollection
     {

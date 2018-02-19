@@ -7,6 +7,7 @@ namespace BenStull.HttpRequestTelemetry.Domain.HttpResponse
     {
         /// <summary>
         ///  Executes telemetry collectors.  Will not execute if previously executed.
+        ///  Response telemetry collectors should be executed once the request is finished being processed
         /// </summary>
         void ExecuteCollectors(IHttpRequestInformation requestInformation,
             IHttpResponseInformation responseInformation, IHttpRequestTelemetry requestTelemetry);
