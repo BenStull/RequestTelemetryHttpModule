@@ -113,6 +113,10 @@ namespace BenStull.HttpRequestTelemetry.AspNetHttpModule.HttpModule
 
                     _originalResponseStream.Write(modifiedResponseData, 0, modifiedResponseData.Length);
                 }
+                else
+                {
+                    _originalResponseStream.Write(buffer, offset, count);
+                }
             }
         }
 

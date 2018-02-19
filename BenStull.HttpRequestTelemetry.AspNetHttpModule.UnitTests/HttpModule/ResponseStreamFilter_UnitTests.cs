@@ -97,6 +97,24 @@ namespace BenStull.HttpRequestTelemetry.Model.UnitTests.HttpModule
             Assert.Equal(bodyCloseTagHtmlBytes.Length, originalResponseStream.Length);
         }
 
+        [Fact]
+        public void When_WriteCalled_OriginalResponseStreamWrittenTo_IfNoBodyCloseTag()
+        {
+            var originalResponseStream = new MemoryStream();
+            var response = new Mock<HttpResponseBase>();
+            response.SetupGet(a => a.ContentType).Returns("text/html");
+            response.SetupGet(a => a.ContentEncoding).Returns(Encoding.UTF8);
+
+            var responseStreamFilter = GetResponseStreamFilter(originalResponseStream, response.Object);
+
+            var html = "<body><div>";
+            var htmlBytes = Encoding.UTF8.GetBytes(html);
+
+            responseStreamFilter.Write(htmlBytes, 0, htmlBytes.Length);
+
+            Assert.Equal(originalResponseStream.Length, htmlBytes.Length);
+        }
+
         private void TelemetryHtmlAppendedBeforeBodyCloseTag_Helper(string bodyCloseTagHtml)
         {
             var originalResponseStream = new MemoryStream();
