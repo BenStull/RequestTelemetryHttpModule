@@ -38,8 +38,15 @@ namespace BenStull.HttpRequestTelemetry.AspNetHttpModule.HttpModule
 
         public override long Position
         {
-            get => throw new NotImplementedException();
-            set => throw new NotImplementedException();
+
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
         }
 
         public override void Flush()
