@@ -23,10 +23,16 @@ namespace BenStull.HttpRequestTelemetry.AspNetHttpModule.HttpModule
 
         static AspNetHttpModule()
         {
-            _requestTelemetryCollectors = new List<IHttpRequestTelemetryCollector>();
+            _requestTelemetryCollectors = new List<IHttpRequestTelemetryCollector>()
+            {
+
+            };
+
             _responseTelemetryCollectors = new List<IHttpResponseTelemetryCollector>()
             {
-                new TotalProcessingTimeTelemetryCollector()
+                new TotalProcessingTimeTelemetryCollector(),
+                new ResponseSizeTelemetryCollector(),
+                new TelemetryProcessingTimeTelemetryCollector()
             };
         }
 
@@ -44,13 +50,21 @@ namespace BenStull.HttpRequestTelemetry.AspNetHttpModule.HttpModule
         public void BeginRequest(HttpContextBase context)
         {
             var requestInformationObject = context.GetRequestInformationObject();
-            var requestTelemetry = context.GetRequestTelemetryObject();
-            var response = context.Response;
 
-            new HttpRequestTelemetryCollectorsCollection(_requestTelemetryCollectors).ExecuteCollectors(requestInformationObject, requestTelemetry);
+            using (requestInformationObject.StartTelemetryProcessingOverheadBlock())
+            {
+                var requestTelemetry = context.GetRequestTelemetryObject();
+                var response = context.Response;
 
-            // All examination and collection of response telemetry is done in the response filter so we can modify the output stream
-            context.Response.Filter = new ResponseStreamFilter(response.Filter, requestTelemetry, requestInformationObject, response, new HttpResponseTelemetryCollectorsCollection(_responseTelemetryCollectors), new TelemetryHtmlComposer());
+                new HttpRequestTelemetryCollectorsCollection(_requestTelemetryCollectors).ExecuteCollectors(
+                    requestInformationObject, requestTelemetry);
+
+                // All examination and collection of response telemetry is done in the response filter so we can modify the output stream
+                context.Response.Filter = new ResponseStreamFilter(response.Filter, requestTelemetry,
+                    requestInformationObject, response,
+                    new HttpResponseTelemetryCollectorsCollection(_responseTelemetryCollectors),
+                    new TelemetryHtmlComposer());
+            }
         }
 
         public void Dispose()

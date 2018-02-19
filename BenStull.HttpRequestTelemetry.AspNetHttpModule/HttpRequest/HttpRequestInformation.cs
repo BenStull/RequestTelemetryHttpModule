@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Web;
 using BenStull.HttpRequestTelemetry.Domain.HttpRequest;
+using BenStull.HttpRequestTelemetry.Domain.ScopedStopwatch;
+using BenStull.HttpRequestTelemetry.Model.Util;
 
 namespace BenStull.HttpRequestTelemetry.AspNetHttpModule.HttpRequest
 {
@@ -10,6 +13,15 @@ namespace BenStull.HttpRequestTelemetry.AspNetHttpModule.HttpRequest
     public class HttpRequestInformation : IHttpRequestInformation
     {
         public DateTime RequestStartTime { get; }
+
+        private readonly Stopwatch _telemetryOverheadTimer = new Stopwatch();
+
+        public TimeSpan TelemetryProcessingOverheadTime => _telemetryOverheadTimer.Elapsed;
+
+        public IScopedStopwatch StartTelemetryProcessingOverheadBlock()
+        {
+            return new ScopedStopwatch(_telemetryOverheadTimer);
+        }
 
         public HttpRequestInformation(HttpContextBase httpContext)
         {

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Globalization;
-using System.Threading;
 using BenStull.HttpRequestTelemetry.Domain.HttpRequest;
 using BenStull.HttpRequestTelemetry.Domain.HttpResponse;
 using BenStull.HttpRequestTelemetry.Domain.Telemetry;
@@ -15,8 +14,8 @@ namespace BenStull.HttpRequestTelemetry.Model.Telemetry.RequestCollectors
     {
         private long _totalRequests;
         private long _totalData;
-        private long _maxResponseSizeEncountered;
-        private long _minResponseSizeEncountered;
+        private long _maxResponseSizeEncountered = long.MinValue;
+        private long _minResponseSizeEncountered = long.MaxValue;
 
         private readonly object _syncObj = new object();
 
@@ -47,10 +46,22 @@ namespace BenStull.HttpRequestTelemetry.Model.Telemetry.RequestCollectors
                 minResponseSizeEncountered = _minResponseSizeEncountered;
             }
 
+            AddTotalRequestsTelemetry(totalRequests, requestTelemetry);
             AddCurrentRequestResponseSizeTelemetry(responseInformation.ResponseBodySizeInBytes, requestTelemetry);
             AddMaxEncounteredTelemetry(maxResponseSizeEncountered, requestTelemetry);
             AddMinEncounteredTelemetry(minResponseSizeEncountered, requestTelemetry);
             AddAverageResponseSizeTelemetry(totalData, totalRequests, requestTelemetry);
+        }
+
+        private void AddTotalRequestsTelemetry(long numberOfRequests, IHttpRequestTelemetry requestTelemetry)
+        {
+            var dataPoint = new HttpRequestTelemetryDataPoint {
+                MetricName = "Total Requests",
+                Description = "Total number of requests the server has processed",
+                Value = numberOfRequests.ToString()
+            };
+
+            requestTelemetry.AddDataPoint(dataPoint);
         }
 
         private void AddCurrentRequestResponseSizeTelemetry(long responseInformationResponseBodySizeInBytes, IHttpRequestTelemetry requestTelemetry)
