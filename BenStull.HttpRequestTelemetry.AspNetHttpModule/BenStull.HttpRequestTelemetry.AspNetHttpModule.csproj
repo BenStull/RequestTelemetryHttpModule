@@ -42,8 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HttpModule\AspNetHttpModule.cs" />
+    <Compile Include="HttpModule\HttpModuleHelperExtensions.cs" />
     <Compile Include="HttpModule\ResponseStreamFilter.cs" />
-    <Compile Include="HttpResponse\AspNetHttpResponseInformation.cs" />
+    <Compile Include="HttpRequest\HttpRequestInformation.cs" />
+    <Compile Include="HttpResponse\HttpResponseInformation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
