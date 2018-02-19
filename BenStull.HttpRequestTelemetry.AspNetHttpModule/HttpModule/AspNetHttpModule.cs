@@ -6,6 +6,7 @@ using BenStull.HttpRequestTelemetry.Domain.HttpResponse;
 using BenStull.HttpRequestTelemetry.Model.HttpResponse;
 using BenStull.HttpRequestTelemetry.Model.HttpRequest;
 using BenStull.HttpRequestTelemetry.Model.Telemetry;
+using BenStull.HttpRequestTelemetry.Model.Telemetry.RequestCollectors;
 
 namespace BenStull.HttpRequestTelemetry.AspNetHttpModule.HttpModule
 {
@@ -23,7 +24,10 @@ namespace BenStull.HttpRequestTelemetry.AspNetHttpModule.HttpModule
         static AspNetHttpModule()
         {
             _requestTelemetryCollectors = new List<IHttpRequestTelemetryCollector>();
-            _responseTelemetryCollectors = new List<IHttpResponseTelemetryCollector>();
+            _responseTelemetryCollectors = new List<IHttpResponseTelemetryCollector>()
+            {
+                new TotalProcessingTimeTelemetryCollector()
+            };
         }
 
         public void Init(HttpApplication context)
