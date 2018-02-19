@@ -45,6 +45,7 @@
     <Compile Include="Telemetry\HttpRequestTelemetry.cs" />
     <Compile Include="HttpResponse\HttpResponseTelemetryCollectorsCollection.cs" />
     <Compile Include="Telemetry\HttpRequestTelemetryDataPoint.cs" />
+    <Compile Include="Telemetry\RequestCollectors\ResponseSizeTelemetryCollector.cs" />
     <Compile Include="Telemetry\RequestCollectors\TotalProcessingTimeTelemetryCollector.cs" />
     <Compile Include="Telemetry\TelemetryHtmlComposer.cs" />
   </ItemGroup>
