@@ -17,13 +17,13 @@ namespace BenStull.HttpRequestTelemetry.AspNetHttpModule.HttpModule
         private readonly IHttpRequestTelemetry _telemetry;
         private readonly IHttpRequestInformation _requestInformation;
         private readonly HttpContextBase _httpContext;
-        private readonly IList<IHttpResponseTelemetryCollector> _telemetryCollectors;
+        private readonly IHttpResponseTelemetryCollectorsCollection _telemetryCollectors;
         private readonly ITelemetryHtmlComposer _telemetryHtmlComposer;
         private long _responseBodyLength;
         private bool _telemetryCollectorsExecuted;
 
         public ResponseStreamFilter(Stream responseStream, IHttpRequestTelemetry telemetry,
-            IHttpRequestInformation requestInformation, HttpResponseBase httpResponse, IList<IHttpResponseTelemetryCollector> telemetryCollectors, ITelemetryHtmlComposer telemetryHtmlComposer)
+            IHttpRequestInformation requestInformation, HttpResponseBase httpResponse, IHttpResponseTelemetryCollectorsCollection telemetryCollectors, ITelemetryHtmlComposer telemetryHtmlComposer)
         {
             _originalResponseStream = responseStream;
             _telemetry = telemetry;
@@ -113,19 +113,7 @@ namespace BenStull.HttpRequestTelemetry.AspNetHttpModule.HttpModule
 
         private void ExecuteTelemetryCollectors()
         {
-            if (_telemetryCollectorsExecuted)
-            {
-                return;
-            }
-
-            var responseInfo = new HttpResponseInformation(_httpResponse, _responseBodyLength);
-
-            foreach (var collector in _telemetryCollectors)
-            {
-                collector.CollectResponseTelemetry(_requestInformation, responseInfo, _telemetry);
-            }
-
-            _telemetryCollectorsExecuted = true;
+            _telemetryCollectors.ExecuteCollectors(_requestInformation, new HttpResponseInformation(_httpResponse, _responseBodyLength), _telemetry);
         }
     }
 }

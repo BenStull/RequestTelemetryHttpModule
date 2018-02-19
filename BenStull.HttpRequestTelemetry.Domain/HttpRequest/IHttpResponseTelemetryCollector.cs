@@ -10,6 +10,6 @@ namespace BenStull.HttpRequestTelemetry.Domain.HttpRequest
     /// </summary>
     public interface IHttpRequestTelemetryCollector
     {
-        void CollectResponseTelemetry(IHttpRequestInformation requestInformation, IHttpRequestTelemetry requestTelemetry);
+        void CollectRequestTelemetry(IHttpRequestInformation requestInformation, IHttpRequestTelemetry requestTelemetry);
     }
 }

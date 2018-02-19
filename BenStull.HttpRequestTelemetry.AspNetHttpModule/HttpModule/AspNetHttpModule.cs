@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Web;
 using BenStull.HttpRequestTelemetry.Domain.HttpRequest;
 using BenStull.HttpRequestTelemetry.Domain.HttpResponse;
+using BenStull.HttpRequestTelemetry.Model.HttpResponse;
+using BenStull.HttpRequestTelemetry.Model.HttpRequest;
 using BenStull.HttpRequestTelemetry.Model.Telemetry;
 
 namespace BenStull.HttpRequestTelemetry.AspNetHttpModule.HttpModule
@@ -41,13 +43,10 @@ namespace BenStull.HttpRequestTelemetry.AspNetHttpModule.HttpModule
             var requestTelemetry = context.GetRequestTelemetryObject();
             var response = context.Response;
 
-            foreach (var collector in _requestTelemetryCollectors)
-            {
-                collector.CollectResponseTelemetry(requestInformationObject, requestTelemetry);
-            }
+            new HttpRequestTelemetryCollectorsCollection(_requestTelemetryCollectors).ExecuteCollectors(requestInformationObject, requestTelemetry);
 
-            // All examination and collection of response telemetry is done in the response filter so we can examine the output stream
-            context.Response.Filter = new ResponseStreamFilter(response.Filter, requestTelemetry, requestInformationObject, response, _responseTelemetryCollectors, new TelemetryHtmlComposer());
+            // All examination and collection of response telemetry is done in the response filter so we can modify the output stream
+            context.Response.Filter = new ResponseStreamFilter(response.Filter, requestTelemetry, requestInformationObject, response, new HttpResponseTelemetryCollectorsCollection(_responseTelemetryCollectors), new TelemetryHtmlComposer());
         }
 
         public void Dispose()

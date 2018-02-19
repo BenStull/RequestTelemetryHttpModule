@@ -17,7 +17,7 @@ namespace BenStull.HttpRequestTelemetry.Model.UnitTests.HttpModule
         {
             return new ResponseStreamFilter(originalResponseStream, new Mock<IHttpRequestTelemetry>().Object,
                 new HttpRequestInformation(new Mock<HttpContextBase>().Object), new Mock<HttpResponseBase>().Object,
-                new List<IHttpResponseTelemetryCollector>(), new Mock<ITelemetryHtmlComposer>().Object);
+                new Mock<IHttpResponseTelemetryCollectorsCollection>().Object, new Mock<ITelemetryHtmlComposer>().Object);
         }
 
         private ResponseStreamFilter GetResponseStreamFilter(MemoryStream originalResponseStream,
@@ -28,7 +28,7 @@ namespace BenStull.HttpRequestTelemetry.Model.UnitTests.HttpModule
 
             return new ResponseStreamFilter(originalResponseStream, new Mock<IHttpRequestTelemetry>().Object,
                 new HttpRequestInformation(new Mock<HttpContextBase>().Object), response,
-                new List<IHttpResponseTelemetryCollector>(), htmlComposer.Object);
+                new Mock<IHttpResponseTelemetryCollectorsCollection>().Object, htmlComposer.Object);
         }
 
         [Fact]
