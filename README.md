@@ -12,7 +12,7 @@ This module can give insight into specific requests/responses, as well as the pa
 
 ## Installation Instructions
 
-Download the [latest release](./releases/latest)
+1. Download the zip file from [latest release](./releases/latest)
 
 ### Option 1: Machine-wide on IIS
 Run the [Install-HttpTelemetryModule.ps1](./BenStull.HttpRequestTelemetry.AspNetHttpModule/Install-HttpTelemetryModule.ps1) script on the IIS server in an elevated cmd prompt.
