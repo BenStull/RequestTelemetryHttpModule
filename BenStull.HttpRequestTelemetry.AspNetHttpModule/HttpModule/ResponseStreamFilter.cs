@@ -81,6 +81,9 @@ namespace BenStull.HttpRequestTelemetry.AspNetHttpModule.HttpModule
             }
         }
 
+        /// <summary>
+        /// Examines html responses and injects telemetry data just before the body close tag
+        /// </summary>
         private void ProcessHtmlResponseBody(byte[] buffer, int offset, int count)
         {
             using (_requestInformation.StartTelemetryProcessingOverheadBlock())

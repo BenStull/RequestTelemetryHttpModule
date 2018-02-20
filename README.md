@@ -12,7 +12,7 @@ This module can give insight into specific requests/responses, as well as the pa
 
 ## Installation Instructions
 
-1. Download the zip file from [latest release](./releases/latest)
+1. Download the zip file from [latest release](/releases/latest)
 
 ### Option 1: Machine-wide on IIS
 Run the [Install-HttpTelemetryModule.ps1](./BenStull.HttpRequestTelemetry.AspNetHttpModule/Install-HttpTelemetryModule.ps1) script on the IIS server in an elevated cmd prompt.
@@ -33,7 +33,7 @@ Run the [Install-HttpTelemetryModule.ps1](./BenStull.HttpRequestTelemetry.AspNet
     </httpModules>
 ```
 
-See the [Demo project web.config](./BenStull.HttpRequestTelemetry.AspNetHttpModule.Demo/web.config) for an example
+See the [Demo project web.config](./BenStull.HttpRequestTelemetry.AspNetHttpModule.Demo/Web.config) for an example
 
 ## Currently Tracked Metrics
 - Number of HTTP requests made since app was loaded
@@ -48,7 +48,7 @@ Absolutely.  To collect a metric about the HTTP Request, implement a new [IHttpR
 
 To add a metric about the HTTP Response, implement a new [IHttpResponseTelemetryCollector](./BenStull.HttpRequestTelemetry.Domain/HttpResponse/IHttpResponseTelemetryCollector.cs) and add it to the collection in the [AspNetHttpModule](./BenStull.HttpRequestTelemetry.AspNetHttpModule/HttpModule/AspNetHttpModule.cs).
 
-You may need to expose additional data about the HTTP request or response on the [HttpRequestInformation](./BenStull.HttpRequestTelemetry.AspNetHttpModule/HttpRequest/HttpRequestInformation.cs) or [HttpRequestInformation](./BenStull.HttpRequestTelemetry.AspNetHttpModule/HttpResponse/HttpResponseInformation.cs) objects.
+You may need to expose additional data about the HTTP request or response on the [HttpRequestInformation](./BenStull.HttpRequestTelemetry.AspNetHttpModule/HttpRequest/HttpRequestInformation.cs) or [HttpResponseInformation](./BenStull.HttpRequestTelemetry.AspNetHttpModule/HttpResponse/HttpResponseInformation.cs) objects.
 
 ## Can this be used on ASP.NET/OWIN self-host?
 
