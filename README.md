@@ -12,22 +12,24 @@ This module can give insight into specific requests/responses, as well as the pa
 
 ## Installation Instructions
 
+Download the [latest release](./releases/latest)
+
 ### Option 1: Machine-wide on IIS
-Run the [Install-BenStullHttpRequestTelemetryModule.ps1](./BenStull.HttpRequestTelemetry.AspNetHttpModule/Deployment/IIS/InstallHttpTelemetryModule.cmd) script on the IIS server in an elevated cmd prompt.
+Run the [Install-HttpTelemetryModule.ps1](./BenStull.HttpRequestTelemetry.AspNetHttpModule/Install-HttpTelemetryModule.ps1) script on the IIS server in an elevated cmd prompt.
 
 ### Option 2: Single app (IIS-hosted)
 1. Add the following to the modules node under system.Webserver in your web.config
 ```xml
     <modules>
       <remove name="HttpRequestTelemetry" />
-      <add name="HttpRequestTelemetry" type="BenStull.HttpRequestTelemetry.AspNetHttpModule.HttpModule.AspNetHttpModule,BenStull.HttpRequestTelemetry.AspNetHttpModule" preCondition="integratedMode,managedHandler" />
+      <add name="HttpRequestTelemetry" type="BenStull.HttpRequestTelemetry.AspNetHttpModule.HttpModule.AspNetHttpModule,BenStull.HttpRequestTelemetry.AspNetHttpModule,Version=1.0.0.0,Culture=neutral,PublicKeyToken=96b62749fde600bc" preCondition="integratedMode,managedHandler" />
     </modules>
 ```
 
 2. Add the following to the httpModules node under system.web in your web.config
 ```xml
     <httpModules>
-      <add name="HttpRequestTelemetry" type="BenStull.HttpRequestTelemetry.AspNetHttpModule.HttpModule.AspNetHttpModule,BenStull.HttpRequestTelemetry.AspNetHttpModule" />
+      <add name="HttpRequestTelemetry" type="BenStull.HttpRequestTelemetry.AspNetHttpModule.HttpModule.AspNetHttpModule,BenStull.HttpRequestTelemetry.AspNetHttpModule,Version=1.0.0.0,Culture=neutral,PublicKeyToken=96b62749fde600bc" />
     </httpModules>
 ```
 

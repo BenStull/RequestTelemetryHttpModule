@@ -29,6 +29,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>BenStull.HttpRequestTelemetry.AspNetHttpModule.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -59,7 +65,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Deployment\IIS\InstallHttpTelemetryModule.cmd">
+    <None Include="BenStull.HttpRequestTelemetry.AspNetHttpModule.snk" />
+    <None Include="Install-HttpTelemetryModule.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
