@@ -12,34 +12,23 @@ This module can give insight into specific requests/responses, as well as the pa
 
 ## Installation Instructions
 
+This will install the Http Module as a global IIS module that will run for all web sites running on the server.
+
 1. Download the zip file from the latest release
 2. Extract the archive to the installation location you prefer
-
-### Option 1: Machine-wide on IIS
-
 3. Open an elevated powershell session and navigate to the folder where you extracted the files
 4. Run Unblock-File .\Install-HttpTelemetryModule.ps1
 5. Run the [Install-HttpTelemetryModule.ps1](./BenStull.HttpRequestTelemetry.AspNetHttpModule/Install-HttpTelemetryModule.ps1) powershell script
 
 Note: This script is not signed so you may need to adjust your PowerShell execution policy via [Set-ExecutionPolicy](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
 
-### Option 2: Single app (IIS-hosted)
-1. Add the following to the modules node under system.Webserver in your web.config
-```xml
-    <modules>
-      <remove name="HttpRequestTelemetry" />
-      <add name="HttpRequestTelemetry" type="BenStull.HttpRequestTelemetry.AspNetHttpModule.HttpModule.AspNetHttpModule,BenStull.HttpRequestTelemetry.AspNetHttpModule,Version=1.0.0.0,Culture=neutral,PublicKeyToken=3244448e74f08f32" preCondition="integratedMode,managedHandler" />
-    </modules>
-```
+## Uninstall Instructions
 
-2. Add the following to the httpModules node under system.web in your web.config
-```xml
-    <httpModules>
-      <add name="HttpRequestTelemetry" type="BenStull.HttpRequestTelemetry.AspNetHttpModule.HttpModule.AspNetHttpModule,BenStull.HttpRequestTelemetry.AspNetHttpModule,Version=1.0.0.0,Culture=neutral,PublicKeyToken=3244448e74f08f32" />
-    </httpModules>
-```
+This will install the Http Module as a global IIS module that will run for all web sites running on the server.
 
-See the [Demo project web.config](./BenStull.HttpRequestTelemetry.AspNetHttpModule.Demo/Web.config) for an example
+1. Open an elevated powershell session and navigate to the folder where you extracted the files
+2. Run Unblock-File .\Uninstall-HttpTelemetryModule.ps1
+3. Run the [Uninstall-HttpTelemetryModule.ps1](./BenStull.HttpRequestTelemetry.AspNetHttpModule/Uninstall-HttpTelemetryModule.ps1) powershell script
 
 ## Currently Tracked Metrics
 - Number of HTTP requests made since app was loaded
