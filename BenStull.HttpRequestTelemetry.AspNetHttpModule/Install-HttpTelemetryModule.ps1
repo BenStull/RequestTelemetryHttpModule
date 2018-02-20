@@ -21,9 +21,10 @@ foreach ($assembly in $GacAssemblyNames) {
 		throw "Could not find assembly $assemblyPath"
 	}
 
-	REM Register the assembly in the GAC
+	# Register the assembly in the GAC
 	$publish.GacInstall($assemblyPath)
 }
 
-New-WebManagedModule -Name $httpModuleName -Type "BenStull.HttpRequestTelemetry.AspNetHttpModule.HttpModule.AspNetHttpModule,BenStull.HttpRequestTelemetry.AspNetHttpModule,Version=1.0.0.0,Culture=neutral,PublicKeyToken=96b62749fde600bc" -Precondition "integratedMode,managedHandler"
+New-WebManagedModule -Name $httpModuleName -Type "BenStull.HttpRequestTelemetry.AspNetHttpModule.HttpModule.AspNetHttpModule,BenStull.HttpRequestTelemetry.AspNetHttpModule,Version=1.0.0.0,Culture=neutral,PublicKeyToken=3244448e74f08f32" -Precondition "integratedMode,managedHandler"
 
+Restart-Service w3svc
