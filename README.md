@@ -6,16 +6,22 @@ An ASP.NET Http Module that collects information and metrics about requests/resp
 ## What is this module?
 This project leverages the [IHttpModule](https://docs.microsoft.com/en-us/dotnet/api/system.web.ihttpmodule) interface to hook into the ASP.NET pipeline in order to collect telemetry data about all HTTP requests and responses.
 
-If the response is text/html, the module will inject a basic HTML table that lists all telemetry metrics that have been collected.
+If the response's ContentType is text/html, the module will inject a basic HTML table that lists all telemetry metrics that have been collected.
 
 This module can give insight into specific requests/responses, as well as the pattern of traffic that your app is encountering.
 
 ## Installation Instructions
 
-1. Download the zip file from [latest release](/releases/latest)
+1. Download the zip file from the latest release
+2. Extract the archive to the installation location you prefer
 
 ### Option 1: Machine-wide on IIS
-Run the [Install-HttpTelemetryModule.ps1](./BenStull.HttpRequestTelemetry.AspNetHttpModule/Install-HttpTelemetryModule.ps1) script on the IIS server in an elevated cmd prompt.
+
+3. Open an elevated powershell session and navigate to the folder where you extracted the files
+4. Run Unblock-File .\Install-HttpTelemetryModule.ps1
+5. Run the [Install-HttpTelemetryModule.ps1](./BenStull.HttpRequestTelemetry.AspNetHttpModule/Install-HttpTelemetryModule.ps1) powershell script
+
+Note: This script is not signed so you may need to adjust your PowerShell execution policy via [Set-ExecutionPolicy](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
 
 ### Option 2: Single app (IIS-hosted)
 1. Add the following to the modules node under system.Webserver in your web.config

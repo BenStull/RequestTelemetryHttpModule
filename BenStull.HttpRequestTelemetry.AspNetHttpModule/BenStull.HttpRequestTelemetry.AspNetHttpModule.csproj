@@ -66,6 +66,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="BenStull.HttpRequestTelemetry.AspNetHttpModule.snk" />
+    <None Include="Uninstall-HttpTelemetryModule.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Install-HttpTelemetryModule.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

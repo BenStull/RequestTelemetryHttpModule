@@ -16,17 +16,8 @@ foreach ($assembly in $GacAssemblyNames) {
 	  throw "Could not find assembly $assemblyPath"
   }
 
-  # Register the assembly in the GAC
-  $publish.GacInstall($assemblyPath)
+  $publish.GacRemove($assemblyPath)
 }
 
-$existingModule = Get-WebManagedModule -Name $httpModuleName
-
-if ($existingModule -ne $null) {
-	Remove-WebManagedModule $httpModuleName
-}
-
-# Register the Http Module
-New-WebManagedModule -Name $httpModuleName -Type "BenStull.HttpRequestTelemetry.AspNetHttpModule.HttpModule.AspNetHttpModule,BenStull.HttpRequestTelemetry.AspNetHttpModule,Version=1.0.0.0,Culture=neutral,PublicKeyToken=3244448e74f08f32" -Precondition "integratedMode,managedHandler"
-
+Remove-WebManagedModule -Name $httpModuleName
 Restart-Service w3svc
