@@ -28,14 +28,14 @@ Note: This script is not signed so you may need to adjust your PowerShell execut
 ```xml
     <modules>
       <remove name="HttpRequestTelemetry" />
-      <add name="HttpRequestTelemetry" type="BenStull.HttpRequestTelemetry.AspNetHttpModule.HttpModule.AspNetHttpModule,BenStull.HttpRequestTelemetry.AspNetHttpModule,Version=1.0.0.0,Culture=neutral,PublicKeyToken=96b62749fde600bc" preCondition="integratedMode,managedHandler" />
+      <add name="HttpRequestTelemetry" type="BenStull.HttpRequestTelemetry.AspNetHttpModule.HttpModule.AspNetHttpModule,BenStull.HttpRequestTelemetry.AspNetHttpModule,Version=1.0.0.0,Culture=neutral,PublicKeyToken=3244448e74f08f32" preCondition="integratedMode,managedHandler" />
     </modules>
 ```
 
 2. Add the following to the httpModules node under system.web in your web.config
 ```xml
     <httpModules>
-      <add name="HttpRequestTelemetry" type="BenStull.HttpRequestTelemetry.AspNetHttpModule.HttpModule.AspNetHttpModule,BenStull.HttpRequestTelemetry.AspNetHttpModule,Version=1.0.0.0,Culture=neutral,PublicKeyToken=96b62749fde600bc" />
+      <add name="HttpRequestTelemetry" type="BenStull.HttpRequestTelemetry.AspNetHttpModule.HttpModule.AspNetHttpModule,BenStull.HttpRequestTelemetry.AspNetHttpModule,Version=1.0.0.0,Culture=neutral,PublicKeyToken=3244448e74f08f32" />
     </httpModules>
 ```
 
